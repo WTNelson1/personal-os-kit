@@ -1,0 +1,17 @@
+/* Bare-element defaults. Same caveat as buttons.css and inputs.css: these are
+   element selectors, so a utility-class app should skip this file. */
+
+a {
+  color: var(--accent);
+}
+
+code {
+  font-family: var(--mono);
+  background: var(--bg-elev-2);
+  border: 1px solid var(--line-soft);
+  border-radius: 4px;
+  padding: 1px 5px;
+  font-size: 11.5px;
+  word-break: break-all;
+  color: var(--text-dim);
+}

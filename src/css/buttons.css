@@ -1,0 +1,90 @@
+/* Buttons and chips — mono, lowercase, outline by default.
+ *
+ * This file styles the bare <button> element as well as .btn. If your app
+ * dresses its buttons with utility classes instead (Tailwind and friends),
+ * skip this file — see the README's "Tailwind-style apps" note.
+ *
+ * At most one .btn-solid per screen. If everything is accent, nothing is.
+ */
+
+button,
+.btn {
+  font-family: var(--mono);
+  font-size: 11px;
+  text-transform: lowercase;
+  border: 1px solid var(--line-soft);
+  background: transparent;
+  color: var(--text-dim);
+  border-radius: 6px;
+  padding: 8px 12px;
+  cursor: pointer;
+  transition: color 0.15s, border-color 0.15s, background-color 0.15s;
+}
+
+button:hover,
+.btn:hover {
+  border-color: var(--line);
+  color: var(--text);
+}
+
+/* Primary — outline accent. */
+.btn-primary {
+  border-color: var(--accent-soft);
+  color: var(--accent);
+  background: transparent;
+}
+.btn-primary:hover {
+  background: var(--kit-accent-wash, color-mix(in srgb, var(--accent) 8%, transparent));
+  border-color: var(--accent-soft);
+  color: var(--accent);
+}
+
+/* Solid CTA — rare, one per screen. */
+.btn-solid {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: var(--bg);
+}
+.btn-solid:hover {
+  opacity: 0.9;
+  background: var(--accent);
+  color: var(--bg);
+}
+
+/* Destructive. Pair with a 2-step inline confirm, never a browser dialog. */
+.btn-danger {
+  color: var(--danger);
+  border-color: var(--danger);
+  background: transparent;
+}
+.btn-danger:hover {
+  color: var(--danger);
+  border-color: var(--danger);
+  background: var(--kit-danger-wash, color-mix(in srgb, var(--danger) 8%, transparent));
+}
+
+/* For a neutral control that only turns dangerous on hover. */
+.danger-hover:hover {
+  color: var(--danger);
+  border-color: var(--danger);
+}
+
+.btn-ghost {
+  border-color: transparent;
+  background: transparent;
+  color: var(--text-mute);
+}
+.btn-ghost:hover {
+  border-color: transparent;
+}
+
+.btn-small {
+  padding: 4px 8px;
+  font-size: 11px;
+  border-radius: 5px;
+}
+
+button:disabled {
+  opacity: 0.45;
+  cursor: default;
+}

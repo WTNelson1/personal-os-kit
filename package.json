@@ -1,0 +1,35 @@
+{
+  "name": "@personal-os/kit",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Shared visual system for the personal OS suite — palette-agnostic CSS layers, the ambient matrix background, and the app switcher.",
+  "type": "module",
+  "sideEffects": [
+    "*.css"
+  ],
+  "exports": {
+    ".": "./src/index.ts",
+    "./background": "./src/background.ts",
+    "./AppSwitcher": "./src/AppSwitcher.tsx",
+    "./css/*": "./src/css/*"
+  },
+  "files": [
+    "src",
+    "README.md"
+  ],
+  "scripts": {
+    "typecheck": "tsc --noEmit"
+  },
+  "peerDependencies": {
+    "react": ">=18"
+  },
+  "peerDependenciesMeta": {
+    "react": {
+      "optional": true
+    }
+  },
+  "devDependencies": {
+    "@types/react": "^19.2.17",
+    "typescript": "~5.9.0"
+  }
+}

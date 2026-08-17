@@ -1,0 +1,28 @@
+/* Base — reset and page typography. */
+
+* {
+  box-sizing: border-box;
+}
+
+/* The page colour lives on <html>, never on <body>. The matrix canvas sits at
+   a negative or zero z-index inside <body>; an opaque body background would
+   paint over it. Body stays paint-transparent — its corner-glow
+   background-image (ambient.css) is mostly transparent pixels, so it doesn't
+   occlude anything. */
+html {
+  background-color: var(--bg);
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  color: var(--text);
+}
+
+body {
+  font-family: var(--sans);
+  font-size: var(--kit-base-size, 14.5px);
+  font-feature-settings: 'ss01', 'cv11';
+  -webkit-font-smoothing: antialiased;
+}

@@ -1,0 +1,33 @@
+/* Layout — the content column and the three flex helpers that cover most rows.
+   Vertical space is cheap; horizontal cramming is not. */
+
+.app-shell {
+  position: relative;
+  z-index: 1;
+  max-width: var(--kit-shell-max, 640px);
+  margin: 0 auto;
+  padding: 0 16px calc(var(--nav-h) + env(safe-area-inset-bottom, 0px) + 24px);
+}
+
+.row {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.row-between {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+}
+
+.stack {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.center {
+  text-align: center;
+}

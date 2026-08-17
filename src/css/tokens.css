@@ -1,0 +1,37 @@
+/* Token contract.
+ *
+ * The kit never names a colour. Every rule reads one of the tokens below, and
+ * the app supplies the values — that is the whole trick: same language, one
+ * palette per app.
+ *
+ * YOUR APP MUST DEFINE (see helm-design-language.md for the recipe):
+ *   --bg --bg-elev --bg-elev-2      surfaces, low to high
+ *   --line --line-soft              hairlines
+ *   --text --text-dim --text-mute   ink, three weights
+ *   --accent --accent-soft          the one "look here" colour, and its quiet form
+ *   --accent-glow                   rgba() of the accent, for the live-dot pulse
+ *   --danger                        soft warning, never alarm-red
+ *
+ * OPTIONAL, all defaulted below or inline:
+ *   --grain-opacity     film grain strength                       (0.03)
+ *   --kit-glow-1/2      corner glow colours                       (accent at 5% / 3.5%)
+ *   --kit-grain-image   noise tile; .grain-chroma swaps in the colour variant
+ *   --kit-grain-z       grain stacking order                      (100)
+ *   --kit-bg-z          matrix canvas stacking order              (0)
+ *   --kit-base-size     body font-size                            (14.5px)
+ *   --kit-shell-max     .app-shell content column width           (640px)
+ *   --kit-nav-bg        bottom-nav fill                           (--bg at 90%)
+ *   --kit-accent-wash   accent hover fill                         (--accent at 8%)
+ *   --kit-danger-wash   danger hover fill                         (--danger at 8%)
+ *
+ * Pin the --kit-* colour knobs to literal rgba() if your app has more than one
+ * theme — the color-mix() defaults follow --accent, which is usually right but
+ * not always (Helm deliberately keeps one fixed glow across light and dark).
+ */
+
+:root {
+  --radius: 8px;
+  --nav-h: 58px;
+  --sans: Inter, -apple-system, BlinkMacSystemFont, sans-serif;
+  --mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+}

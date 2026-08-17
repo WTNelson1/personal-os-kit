@@ -1,0 +1,74 @@
+/* Inputs — sunken fill, hairline border, accent border on focus. No focus
+   rings or glows. Same caveat as buttons.css: this styles bare elements, so
+   utility-class apps should skip it. */
+
+input[type='text'],
+input[type='password'],
+input[type='date'],
+textarea,
+select {
+  font-family: var(--sans);
+  font-size: 14px;
+  width: 100%;
+  background: var(--bg-elev-2);
+  color: var(--text);
+  border: 1px solid var(--line-soft);
+  border-radius: 6px;
+  padding: 9px 11px;
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+  outline: none;
+  border-color: var(--accent-soft);
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: var(--text-mute);
+}
+
+textarea {
+  resize: vertical;
+  min-height: 100px;
+  line-height: 1.55;
+}
+
+/* A labelled field: micro-label above, control below. */
+label.field {
+  display: block;
+  margin-bottom: 12px;
+}
+
+label.field .label-text,
+.field .label-text {
+  display: block;
+  font-family: var(--mono);
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  color: var(--text-mute);
+  margin-bottom: 6px;
+}
+
+/* Tap-to-edit: plain text that becomes a borderless input in place.
+   The dotted underline on hover is the only hint that it is editable. */
+.editable {
+  cursor: text;
+}
+.editable:hover {
+  text-decoration: underline dotted var(--text-mute);
+  text-underline-offset: 3px;
+}
+
+.editable-input {
+  flex: 1;
+  background: transparent !important;
+  border: none !important;
+  border-bottom: 1px solid var(--accent-soft) !important;
+  border-radius: 0 !important;
+  padding: 0 0 2px !important;
+  font-size: 14px;
+  line-height: 1.45;
+}

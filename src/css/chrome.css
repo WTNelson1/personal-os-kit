@@ -1,0 +1,13 @@
+/* Browser chrome — scrollbars and selection.
+   Optional: adopting this in an existing app changes how selection and
+   scrollbars look, so it is not part of kit.css. */
+
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--line) transparent;
+}
+
+::selection {
+  background: var(--accent-soft);
+  color: var(--bg);
+}

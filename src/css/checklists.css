@@ -1,0 +1,56 @@
+/* Checklists — hairline-divided rows with a square-ish custom checkbox.
+   Done rows go quiet and strike through; they are never removed from view. */
+
+.check-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--line-soft);
+}
+
+.check-item:last-child {
+  border-bottom: none;
+}
+
+.check-item input[type='checkbox'] {
+  appearance: none;
+  width: 15px;
+  height: 15px;
+  margin-top: 2px;
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  background: var(--bg-elev-2);
+  flex-shrink: 0;
+  cursor: pointer;
+  display: grid;
+  place-content: center;
+  transition: border-color 0.15s;
+}
+
+.check-item input[type='checkbox']:hover {
+  border-color: var(--accent-soft);
+}
+
+.check-item input[type='checkbox']:checked {
+  border-color: var(--accent-soft);
+}
+
+.check-item input[type='checkbox']:checked::before {
+  content: '';
+  width: 7px;
+  height: 7px;
+  border-radius: 2px;
+  background: var(--accent);
+}
+
+.check-item .text {
+  flex: 1;
+  line-height: 1.45;
+  font-size: 14px;
+}
+
+.check-item.done .text {
+  color: var(--text-mute);
+  text-decoration: line-through;
+}

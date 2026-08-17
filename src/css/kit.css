@@ -1,0 +1,19 @@
+/* The whole kit, in cascade order. Import this one file and supply a palette.
+ *
+ * chrome.css is deliberately NOT here — it restyles selection and scrollbars,
+ * which is a visible change for an app that already shipped. New apps should
+ * import it too:  @import '@personal-os/kit/css/chrome.css';
+ */
+
+@import './tokens.css';
+@import './base.css';
+@import './ambient.css';
+@import './layout.css';
+@import './micro-labels.css';
+@import './cards.css';
+@import './buttons.css';
+@import './inputs.css';
+@import './checklists.css';
+@import './nav.css';
+@import './elements.css';
+@import './app-switcher.css';
