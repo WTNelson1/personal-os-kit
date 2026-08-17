@@ -1,5 +1,8 @@
 import { useEffect, useId, useRef, useState } from 'react'
-import type { KeyboardEvent as ReactKeyboardEvent } from 'react'
+import type {
+  KeyboardEvent as ReactKeyboardEvent,
+  MouseEvent as ReactMouseEvent,
+} from 'react'
 
 // The wordmark, opened. Every app in the suite shares this language and owns
 // its palette, so the dot beside each name carries the identity — the palette
@@ -52,6 +55,20 @@ export default function AppSwitcher({ apps, current, label, className }: AppSwit
     }
   }, [open])
 
+  // Installed as a PWA, the suite is a set of separate origins, and a browser
+  // will not let a plain <a> out of an app's scope without spawning a second
+  // window — you end up with one window per app. Driving the same navigation
+  // through location.assign keeps it in the window you are already in.
+  // In an ordinary tab this is exactly what the link would have done anyway.
+  // Modified clicks are left alone so "open in new tab" still works.
+  function go(e: ReactMouseEvent<HTMLAnchorElement>, url: string) {
+    if (e.defaultPrevented) return
+    if (e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return
+    e.preventDefault()
+    setOpen(false)
+    window.location.assign(url)
+  }
+
   // Up/down walk the list; the popover is small enough that nothing more is
   // warranted.
   function onMenuKey(e: ReactKeyboardEvent<HTMLDivElement>) {
@@ -94,7 +111,13 @@ export default function AppSwitcher({ apps, current, label, className }: AppSwit
                 <span className="app-switcher-here">here</span>
               </span>
             ) : (
-              <a key={app.name} className="app-switcher-item" role="menuitem" href={app.url}>
+              <a
+                key={app.name}
+                className="app-switcher-item"
+                role="menuitem"
+                href={app.url}
+                onClick={(e) => go(e, app.url)}
+              >
                 {dot}
                 {app.name}
               </a>
