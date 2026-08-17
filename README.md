@@ -225,11 +225,23 @@ left, so the wordmark reads exactly as it did — it just opens now.
 
 Props: `apps` (`{ name, url, color }[]`), `current` (that entry is listed and
 marked, not linked), `label` (trigger text, defaults to `current`), and
-`className`. Links are plain `<a href>` because siblings are separate deploys,
-not routes. Closes on outside click or Escape; up/down walk the list.
+`className`. Closes on outside click or Escape; up/down walk the list.
 
 In Next.js it needs a client boundary — import it from a component that already
 has `'use client'`.
+
+**It switches in the current window.** Rows keep a real `href` — middle-click
+and cmd-click behave normally — but a plain click is driven through
+`location.assign`. That matters once the apps are installed: each is its own
+origin, so a browser will not follow a plain link out of an app's scope without
+opening a second window, and you end up with one window per app.
+
+**Put it where a narrow window can reach it.** The wordmark is usually in a
+desktop top bar, and a mobile layout that swaps that bar for a bottom nav will
+lose the switcher entirely — a bottom bar is capped at five cells and has no
+room for a wordmark. Give small screens their own slim brand row instead. Helm
+does this with a `sm:hidden` `MobileBrand`; Anchor's header is mobile-first and
+already carries it at every width.
 
 ---
 
